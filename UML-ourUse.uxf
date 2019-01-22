@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>434</x>
+      <y>357</y>
+      <w>168</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Card
+--
+
+--
+getOwner(): Player&amp;
+getCP(): int
+getDescription(): string
+getName(): string
+setCP(int): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>266</y>
+      <w>231</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Effect
+--
+vector&lt;Effect&gt; // damage oponent &amp; heal leader
+--
+doEffect(Card&amp;,Player&amp;, int=0): void
+doEffect(Player&amp;, int=0): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>994</x>
+      <y>462</y>
+      <w>133</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>TriggerEffect
+--
+condition
+
+--
+getCondition(): condition
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>455</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>ActivatedEffect
+--
+int cost
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1141</x>
+      <y>329</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1043</x>
+      <y>364</y>
+      <w>329</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;450.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1043</x>
+      <y>364</y>
+      <w>21</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1351</x>
+      <y>364</y>
+      <w>21</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>329</x>
+      <y>581</y>
+      <w>175</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Minion
+--
+
+--
+getATK(): int
+getDEF(): int
+setATK(int): void
+setDEF(int): void
+getTrigEffects(): vector&lt;TrigerEffect*&gt;
+getActEffect(): ActivatedEffect&amp;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>805</x>
+      <y>581</y>
+      <w>147</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Ritual
+--
+
+--
+getCharge(): int
+getEffect(): TriggerEffect&amp;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>581</x>
+      <y>581</y>
+      <w>133</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Spells
+--
+
+--
+getEffect(): ActivatedEffect&amp;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>798</y>
+      <w>224</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>Enchantments
+--
+- Minion *parentMinion
+- Minion &amp;minionCore
+- int ATK
+- int DEF
+- Effect effect
+
+/the ATK and DEF of an enchantment are/
+/put into effect using the corresponding getters/
+
+/this design ensures that whenever someone/
+/gets something, they consult the most recently/
+/played enchantment (this includes effects)/
+
+--
+getMinion(): Minion&amp;
+/ctor applies enchantments, dtor removes them/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>497</x>
+      <y>609</y>
+      <w>63</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>70.0;270.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>714</y>
+      <w>147</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;190.0;100.0;190.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>539</y>
+      <w>490</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;680.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>476</y>
+      <w>21</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>399</x>
+      <y>539</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>539</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>868</x>
+      <y>539</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>861</x>
+      <y>238</y>
+      <w>126</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Player
+--
+
+--
+draw(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1393</x>
+      <y>581</y>
+      <w>126</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Subject
+--
+
+--
+/attach(Observer&amp;): void/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1253</x>
+      <y>903</y>
+      <w>161</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Observer
+--
+
+--
+/notify(map&lt;string, string&gt;): void/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>1001</y>
+      <w>133</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Board
+--
+basicDisplay
+--
+drawBoard(string): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>693</y>
+      <w>322</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>Handler
+--
+
+--
+startTurn(Player&amp;): void
+endTurn(Player&amp;): void
+minionEntersPlay(Minion&amp;, Player&amp;): void
+minionLeavesPlay(Minion&amp;, Player&amp;): void
+minionAttack(Minion&amp;, Card&amp;, Player&amp;): void
+cardPlayed(Minion&amp;, Player&amp;, Card&amp;): void
+cardPlayed(Spell&amp;, Player&amp;, Card&amp;): void
+cardPlayed(Enchantment&amp;, Player&amp;, Card&amp;): void
+cardPlayed(Ritual&amp;, Player&amp;, Card&amp;): voi
+attach(Observer&amp;): void
+notifyObserver(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1316</x>
+      <y>973</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1449</x>
+      <y>644</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>154</x>
+      <y>798</y>
+      <w>133</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>BasicMinion
+--
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>203</x>
+      <y>777</y>
+      <w>217</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>147</y>
+      <w>658</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;</panel_attributes>
+    <additional_attributes>920.0;170.0;920.0;10.0;10.0;10.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>224</y>
+      <w>147</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>CardFactory
+--
+
+--
+loadCard(string&amp;, Player&amp;): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

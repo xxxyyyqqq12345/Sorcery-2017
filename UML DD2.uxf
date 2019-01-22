@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>344</y>
+      <w>280</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Card
+--
+
+--
+/+ &lt;&lt;abstract&gt;&gt; play(Handler&amp;, Player*, Character): void/
+/+ &lt;&lt;abstract&gt;&gt; draw(Board*): card_template_t/
+/+ &lt;&lt;abstract&gt;&gt; draw_graphics(Xwindow&amp;,/
+/                       x: const int, y: const int): void)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1024</x>
+      <y>208</y>
+      <w>272</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Ability
+--
+
+--
+/+ doAbility(Player&amp;, char): bool/
+/+ doAbility(player1: Player&amp;, player2: Player&amp;): bool/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>384</y>
+      <w>192</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>TriggeredAbility
+--
+ 
+--
++ doAbility(Player&amp;, Minion&amp;): bool
++ doAbility(trigHolder: Minion&amp;, 
+        mTarget: Minion*): bool
++ getCondition(): TrigType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1280</x>
+      <y>384</y>
+      <w>232</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>ActivatedAbility
+--
+
+--
++ doAbility(Player&amp;, char, Minion*): bool
++ doAbility(player1: Player&amp;,
+            player2: Player&amp;, Minion*): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1128</x>
+      <y>280</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1016</x>
+      <y>320</y>
+      <w>376</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;450.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1016</x>
+      <y>320</y>
+      <w>24</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>320</y>
+      <w>24</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>568</y>
+      <w>280</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Minion
+--
+
+--
+/+ &lt;&lt;abstract&gt;&gt; getTrigAbilities(): vector*&lt;TriggeredAbility*&gt;/
+/+ &lt;&lt;abstract&gt;&gt; getActAbility(): ActivatedAbility*/
+/+ &lt;&lt;abstract&gt;&gt; setActAbility(ActivatedAbility*): void/
+/+ &lt;&lt;abstract&gt;&gt; addTrigAbility(TriggeredAbility*): void/
++ setOnBoard(bool): void
+/+ detach(): Minion*/
+/+ draw_self(Board*): vector&lt;card_template_t&gt;/
+/+ play(Handler&amp;, Player*, Character): bool/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>568</y>
+      <w>216</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Ritual
+--
+
+--
++ play(Handler&amp;, Player*, Character): bool
++ draw(Board*): card_template_t
++ doAbility(Player&amp; Minion&amp;): bool
++ doAbility(player1: Player&amp;, 
+                  player2: Player&amp;): bool
++ getCondition(): TrigType
+draw_graphics(Xwindow&amp;, x: const int,
+                 y: const int): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>464</x>
+      <y>568</y>
+      <w>272</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Spell
+--
+
+--
++ play(Handler&amp;, Player*, Character): bool
++ draw(Board*): card_template_t
++ doAbility(Player &amp;, character): bool
++ doAbility(player1: Player&amp;, player2: Player&amp;): bool
++ draw_graphics(Xwindow&amp;, x: const int, 
+                           y: const int): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>384</x>
+      <y>816</y>
+      <w>312</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>Enchantment
+--
+
+--
++ getTrigAbilities(): vector*&lt;TriggeredAbility*&gt;
++ getActAbility(): ActivatedAbility*
++ attach(Minion*): Enchantment*
++ detach(): Minion*
++ play(Handler&amp;, Player*, character): bool
++ find_basic_minion(): Minion*
++ draw(Board*): card_template_t
++ draw_self(Board*): vector&lt;card_template_t&gt;
++ draw_graphics(Xwindow&amp;, x: const int, y: const int): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>384</x>
+      <y>600</y>
+      <w>112</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+
+
+ Minion*
+ 0..*</panel_attributes>
+    <additional_attributes>80.0;270.0;80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>720</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;190.0;100.0;190.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>520</y>
+      <w>560</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;680.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>416</x>
+      <y>440</y>
+      <w>24</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>520</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>520</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>520</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>776</x>
+      <y>144</y>
+      <w>208</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Player
+--
+
+--
++ isActive(): bool
++ draw(): void
++ draw_graphics(Xwindow&amp;, 
+          x: const int, y: const int): void
++ shuffle(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>760</y>
+      <w>264</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Subject
+--
+
+--
++ attach(Observer&amp;): void
++ notifyObservers(BoardPlace, Player*): void
++ notifyObservers(AP: Player*, NAP: Player*): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>776</x>
+      <y>840</y>
+      <w>280</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Observer
+--
+
+--
+/+ &lt;&lt;abstract&gt;&gt; notify(BoardPlace, Player*): void/
+/+ &lt;&lt;abstract&gt;&gt; notify(AP: Player*, NAP: Player*): void/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>992</y>
+      <w>304</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Board
+--
+
+--
++ attach_graphics(Xwindow*): void
++ display_hand_graphics(Player*): void
++ displaye_board_graphics(p1: Player*, p2: Player*): void
+/+ display_board(p1: Player*, p2: Player*): void/
+/+ display_hand(Player*): void/
+/+ display_minion(Minion*): void/
+/+ draw_minion_ne(BasicMinion*): card_template_t/
+/+ draw_minion_ae(BasicMinion*): card_template_t/
+/+ draw_minion_te(BasicMinion*): card_template_t/
+/+ draw_ritual(Ritual*): card_template_t/
+/+ draw_spell(Spell*): card_template_t/
+/+ draw_enchantment(Enchantment*): card_template_t/
+/+ draw_enchantment_a_d(Enchantment*): card_template_t/
++ notify(p1: Player1*, p2: Player2): void
++ notufy(BoardPlace, Player*): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>912</y>
+      <w>304</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>Handler
+--
+
+--
++ start_turn(Player&amp;): void
++ end_turn(Player&amp;): void
++ moveToGrave(Player&amp;, int): Minion*;
++moveToGrave(Minion&amp;): Minion*;
++ minion_enters_play(Player&amp;, Minion&amp;): void
++ minion_leaves_play(Player&amp;, Minion&amp;): void
++ minion_attack(Minion*, Player&amp;, int targetCard=0): void
++ card_played(Minion&amp;, Player*, char): bool
++ card_played(Spell&amp;, Player*, char): bool
++ card_played(Enchantment&amp;, Player*, char): bool
++ card_played(Ritual);
++ dumpCard(Card*): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>920</y>
+      <w>24</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1296</x>
+      <y>832</y>
+      <w>24</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>816</y>
+      <w>312</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>BasicMinion
+--
+
+--
++ getTrigAbilities(): vector*&lt;TriggeredAbility*&gt;
++ getActAbility(): ActivatedAbility*
++ addTrigAbility(TriggeredAbility*): void
++ setActAbility(ActivatedAbility*): void
++ detach(): Minion*
++ draw(Board*): card_template_t
++ draw_self(Board*): vector&lt;card_template_t&gt;
++ draw_graphics(Xwindow&amp;, x: const int, y: const int): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>56</x>
+      <y>792</y>
+      <w>248</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>64</y>
+      <w>744</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+0..*
+
+TriggeredAbility*</panel_attributes>
+    <additional_attributes>910.0;400.0;910.0;20.0;10.0;20.0;10.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>112</y>
+      <w>200</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>CardFactory
+--
+
+--
++ loadCard(Player&amp;, String&amp;): void
++ loadDeck(Player&amp;, String&amp;): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>912</x>
+      <y>424</y>
+      <w>104</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+  TriggeredAbility*
+  0..*</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>440</y>
+      <w>696</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+  ActivatedAbility*</panel_attributes>
+    <additional_attributes>10.0;340.0;10.0;430.0;730.0;430.0;730.0;10.0;850.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>208</x>
+      <y>8</y>
+      <w>1208</w>
+      <h>576</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+ActivatedAbility*</panel_attributes>
+    <additional_attributes>1490.0;470.0;1490.0;20.0;10.0;20.0;10.0;700.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>984</x>
+      <y>528</y>
+      <w>160</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt; enumeration &gt;&gt;
+TrigType
+--
+Start
+End
+MinionEnter
+MinionLeave
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>1032</y>
+      <w>136</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt; enumeration &gt;&gt;
+BoardPlace
+--
+Minions
+Rituals
+Hand
+Player
+Grave
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
